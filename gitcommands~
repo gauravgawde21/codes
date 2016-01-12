@@ -1,0 +1,17 @@
+sudo apt-get install git
+git config --global user.name "user_name"
+git config --global user.email "email_id"
+git init Mytest
+cd Mytest
+gedit README
+git add README
+git add sample.c
+git commit -m "some_message"
+git remote add origin https://github.com/user_name/Mytest.git
+git push origin master
+
+Username: gaurav.gawde21@gmail.com
+Password: trips21Vjti@
+
+
+
