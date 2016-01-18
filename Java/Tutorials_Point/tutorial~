@@ -1,0 +1,949 @@
+public class MyFirstJavaProgram {
+
+    public static void main(String []args) {
+       System.out.println("Hello World");
+    }
+} 
+
+---------------------------------------------------------------------------------------------------------
+
+public class MyFirstJavaProgram {
+
+   /* This is my first java program.  
+    * This will print 'Hello World' as the output
+    */
+	
+    public static void main(String []args) {
+       System.out.println("Hello World"); // prints Hello World
+    }
+} 
+
+---------------------------------------------------------------------------------------------------------
+
+class FreshJuice {
+
+   enum FreshJuiceSize{ SMALL, MEDIUM, LARGE }
+   FreshJuiceSize size;
+}
+
+public class FreshJuiceTest {
+
+   public static void main(String args[]){
+      FreshJuice juice = new FreshJuice();
+      juice.size = FreshJuice.FreshJuiceSize.MEDIUM ;
+      System.out.println("Size: " + juice.size);
+   }
+}
+
+------------------------------------------------------------
+
+public class MyFirstJavaProgram{
+
+   /* This is my first java program.
+    * This will print 'Hello World' as the output
+    * This is an example of multi-line comments.
+    */
+
+    public static void main(String []args){
+       // This is an example of single line comment
+       /* This is also an example of single line comment. */
+       System.out.println("Hello World"); 
+    }
+} 
+
+---------------------------------------
+
+public class Dog{
+   String breed;
+   int ageC
+   String color;
+
+   void barking(){
+   }
+   
+   void hungry(){
+   }
+   
+   void sleeping(){
+   }
+}
+
+-------------------------------------------------
+
+public class Puppy{
+   public Puppy(){
+   }
+
+   public Puppy(String name){
+      // This constructor has one parameter, name.
+   }
+}
+
+---------------------------------------------
+
+public class Puppy{
+
+   public Puppy(String name){
+      // This constructor has one parameter, name.
+      System.out.println("Passed Name is :" + name ); 
+   }
+   
+   public static void main(String []args){
+      // Following statement would create an object myPuppy
+      Puppy myPuppy = new Puppy( "tommy" );
+   }
+}
+
+-------------------------------------------------
+
+public class Puppy{
+   
+   int puppyAge;
+
+   public Puppy(String name){
+      // This constructor has one parameter, name.
+      System.out.println("Name chosen is :" + name ); 
+   }
+   
+   public void setAge( int age ){
+       puppyAge = age;
+   }
+
+   public int getAge( ){
+       System.out.println("Puppy's age is :" + puppyAge ); 
+       return puppyAge;
+   }
+   
+   public static void main(String []args){
+      /* Object creation */
+      Puppy myPuppy = new Puppy( "tommy" );
+
+      /* Call class method to set puppy's age */
+      myPuppy.setAge( 2 );
+
+      /* Call another class method to get puppy's age */
+      myPuppy.getAge( );
+
+      /* You can access instance variable as follows as well */
+      System.out.println("Variable Value :" + myPuppy.puppyAge ); 
+   }
+}
+
+---------------------------------------------------------------------------------
+
+import java.io.*;
+
+public class Employee{
+
+   String name;
+   int age;
+   String designation;
+   double salary;
+	
+   // This is the constructor of the class Employee
+   public Employee(String name){
+      this.name = name;
+   }
+   // Assign the age of the Employee  to the variable age.
+   public void empAge(int empAge){
+      age =  empAge;
+   }
+   /* Assign the designation to the variable designation.*/
+   public void empDesignation(String empDesig){
+      designation = empDesig;
+   }
+   /* Assign the salary to the variable	salary.*/
+   public void empSalary(double empSalary){
+      salary = empSalary;
+   }
+   /* Print the Employee details */
+   public void printEmployee(){
+      System.out.println("Name:"+ name );
+      System.out.println("Age:" + age );
+      System.out.println("Designation:" + designation );
+      System.out.println("Salary:" + salary);
+   }
+}
+
+import java.io.*;
+
+public class EmployeeTest{
+
+   public static void main(String args[]){
+      /* Create two objects using constructor */
+      Employee empOne = new Employee("James Smith");
+      Employee empTwo = new Employee("Mary Anne");
+
+      // Invoking methods for each object created
+      empOne.empAge(26);
+      empOne.empDesignation("Senior Software Engineer");
+      empOne.empSalary(1000);
+      empOne.printEmployee();
+
+      empTwo.empAge(21);
+      empTwo.empDesignation("Software Engineer");
+      empTwo.empSalary(500);
+      empTwo.printEmployee();
+   }
+}
+-----------------------------------------------------------------------------------
+
+public class Test{ 
+   public void pupAge(){
+      int age = 0;
+      age = age + 7;
+      System.out.println("Puppy age is : " + age);
+   }
+   
+   public static void main(String args[]){
+      Test test = new Test();
+      test.pupAge();
+   }
+}
+
+Output: Puppy age is: 7
+
+public class Test{ 
+   public void pupAge(){
+      int age;
+      age = age + 7;
+      System.out.println("Puppy age is : " + age);
+   }
+   
+   public static void main(String args[]){
+      Test test = new Test();
+      test.pupAge();
+   }
+}
+
+Output: Test.java:4:variable number might not have been initialized
+age = age + 7;
+         ^
+1 error
+
+-----------------------------------------------------------------------------------------
+
+import java.io.*;
+
+public class Employee{
+   // this instance variable is visible for any child class.
+   public String name;
+   
+   // salary  variable is visible in Employee class only.
+   private double salary;
+   
+   // The name variable is assigned in the constructor. 
+   public Employee (String empName){
+      name = empName;
+   }
+
+   // The salary variable is assigned a value.
+   public void setSalary(double empSal){
+      salary = empSal;
+   }
+   
+   // This method prints the employee details.
+   public void printEmp(){
+      System.out.println("name  : " + name );
+      System.out.println("salary :" + salary);
+   }
+
+   public static void main(String args[]){
+      Employee empOne = new Employee("Ransika");
+      empOne.setSalary(1000);
+      empOne.printEmp();
+   }
+}
+
+------------------------------------------------------------------------------------------
+
+import java.io.*;
+
+public class Employee{
+   // salary  variable is a private static variable
+   private static double salary;
+
+   // DEPARTMENT is a constant
+   public static final String DEPARTMENT = "Development ";
+
+   public static void main(String args[]){
+      salary = 1000;
+      System.out.println(DEPARTMENT + "average salary:" + salary);
+   }
+}
+
+----------------------------------------------------------------------------------------
+
+public class Logger {
+   private String format;
+   public String getFormat() {
+      return this.format;
+   }
+   public void setFormat(String format) {
+      this.format = format;
+   }
+}
+
+-------------------------------------------------------
+
+class AudioPlayer {
+   protected boolean openSpeaker(Speaker sp) {
+      // implementation details
+   }
+}
+
+class StreamingAudioPlayer {
+   boolean openSpeaker(Speaker sp) {
+      // implementation details
+   }
+}
+
+-------------------------------------------
+
+public class InstanceCounter {
+
+   private static int numInstances = 0;
+
+   protected static int getCount() {
+      return numInstances;
+   }
+
+   private static void addInstance() {
+      numInstances++;
+   }
+
+   InstanceCounter() {
+      InstanceCounter.addInstance(); 
+   }
+
+   public static void main(String[] arguments) {
+      System.out.println("Starting with " +
+      InstanceCounter.getCount() + " instances");
+      for (int i = 0; i < 500; ++i){
+         new InstanceCounter();
+	  }
+      System.out.println("Created " +
+      InstanceCounter.getCount() + " instances");
+   }
+}
+
+-----------------------------------------------------------------
+
+public class Test{
+  final int value = 10;
+  // The following are examples of declaring constants:
+  public static final int BOXWIDTH = 6;
+  static final String TITLE = "Manager";
+  
+  public void changeValue(){
+     value = 12; //will give an error
+  }
+}
+
+------------------------------------------
+
+public class Test{
+    public final void changeName(){
+       // body of method
+    }
+}
+
+-----------------------------------------
+
+abstract class Caravan{
+   private double price;
+   private String model;
+   private String year;
+   public abstract void goFast(); //an abstract method
+   public abstract void changeColor();
+}
+
+--------------------------------------------------
+
+public abstract class SuperClass{
+    abstract void m(); //abstract method
+}
+
+class SubClass extends SuperClass{
+     // implements the abstract method
+      void m(){
+	  .........
+      }
+}
+
+------------------------------------------------
+
+public synchronized void showDetails(){
+.......
+} 
+
+----------------------------------------------
+
+public transient int limit = 55;   // will not persist
+public int b; // will persist
+
+-------------------------------------------------
+
+   // ...
+}
+private boolean myFlag;
+static final double weeks = 9.5;
+protected static final int BOXWIDTH = 42;
+public static void main(String[] arguments) {
+   // body of method
+}
+
+-----------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]){
+      int a, b;
+      a = 10;
+      b = (a == 1) ? 20: 30;
+      System.out.println( "Value of b is : " +  b );
+
+      b = (a == 10) ? 20: 30;
+      System.out.println( "Value of b is : " + b );
+   }
+}
+
+-----------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]){
+      String name = "James";
+      // following will return true since name is type of String
+      boolean result = name instanceof String;  
+      System.out.println( result );
+   }
+}
+
+--------------------------------------------
+
+class Vehicle {}
+
+public class Car extends Vehicle {
+   public static void main(String args[]){
+      Vehicle a = new Car();
+      boolean result =  a instanceof Car;
+      System.out.println( result );
+   }
+}
+
+--------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]) {
+      int x = 10;
+
+      while( x < 20 ) {
+         System.out.print("value of x : " + x );
+         x++;
+         System.out.print("\n");
+      }
+   }
+}
+
+---------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]) {
+
+      for(int x = 10; x < 20; x = x+1) {
+         System.out.print("value of x : " + x );
+         System.out.print("\n");
+      }
+   }
+}
+
+----------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]){
+      int x = 10;
+
+      do{
+         System.out.print("value of x : " + x );
+         x++;
+         System.out.print("\n");
+      }while( x < 20 );
+   }
+}
+
+-------------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]) {
+      int [] numbers = {10, 20, 30, 40, 50};
+
+      for(int x : numbers ) {
+         if( x == 30 ) {
+	      break;
+         }
+         System.out.print( x );
+         System.out.print("\n");
+      }
+   }
+}
+
+---------------------------------------------
+
+ublic class Test {
+
+   public static void main(String args[]) {
+      int [] numbers = {10, 20, 30, 40, 50};
+
+      for(int x : numbers ) {
+         if( x == 30 ) {
+	      continue;
+         }
+         System.out.print( x );
+         System.out.print("\n");
+      }
+   }
+}
+
+---------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]){
+      int x = 10;
+
+      if( x < 20 ){
+         System.out.print("This is if statement");
+      }
+   }
+}
+
+--------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]){
+      int x = 30;
+      int y = 10;
+
+      if( x == 30 ){
+         if( y == 10 ){
+             System.out.print("X = 30 and Y = 10");
+          }
+       }
+    }
+}
+
+-----------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]){
+      int x = 30;
+
+      if( x < 20 ){
+         System.out.print("This is if statement");
+      }else{
+         System.out.print("This is else statement");
+      }
+   }
+}
+
+-----------------------------------------------
+
+ublic class Test {
+
+   public static void main(String args[]){
+      int x = 30;
+
+      if( x == 10 ){
+         System.out.print("Value of X is 10");
+      }else if( x == 20 ){
+         System.out.print("Value of X is 20");
+      }else if( x == 30 ){
+         System.out.print("Value of X is 30");
+      }else{
+         System.out.print("This is else statement");
+      }
+   }
+}
+
+------------------------------------------------------
+
+public class Test {
+
+   public static void main(String args[]){
+      //char grade = args[0].charAt(0);
+      char grade = 'C';
+
+      switch(grade)
+      {
+         case 'A' :
+            System.out.println("Excellent!"); 
+            break;
+         case 'B' :
+         case 'C' :
+            System.out.println("Well done");
+            break;
+         case 'D' :
+            System.out.println("You passed");
+         case 'F' :
+            System.out.println("Better try again");
+            break;
+         default :
+            System.out.println("Invalid grade");
+      }
+      System.out.println("Your grade is " + grade);
+   }
+}
+
+---------------------------------------------------------
+
+public class Test{
+
+   public static void main(String args[]){
+      Integer x = 5; // boxes int to an Integer object
+      x =  x + 10;   // unboxes the Integer to a int
+      System.out.println(x); 
+   }
+}
+
+-------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      Integer x = 5;
+      // Returns byte primitive data type
+      System.out.println( x.byteValue() );
+
+      // Returns double primitive data type
+      System.out.println(x.doubleValue());
+
+      // Returns long primitive data type
+      System.out.println( x.longValue() );      
+   }
+}
+
+---------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      Integer x = 5;
+      System.out.println(x.compareTo(3));
+      System.out.println(x.compareTo(5));
+      System.out.println(x.compareTo(8));            
+     }
+}
+
+---------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      Integer x = 5;
+      Integer y = 10;
+      Integer z =5;
+      Short a = 5;
+
+      System.out.println(x.equals(y));  
+      System.out.println(x.equals(z)); 
+      System.out.println(x.equals(a));
+     }
+}
+
+---------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      
+      Integer x =Integer.valueOf(9);
+      Double c = Double.valueOf(5);
+      Float a = Float.valueOf("80");               
+
+      Integer b = Integer.valueOf("444",16);
+
+      System.out.println(x); 
+      System.out.println(c);
+      System.out.println(a);
+      System.out.println(b);
+   }
+}
+
+Output:
+
+9
+5.0
+80.0
+1092
+
+-------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      Integer x = 5;
+
+      System.out.println(x.toString());  
+      System.out.println(Integer.toString(12)); 
+   }
+}
+
+Output:
+
+5
+12
+
+-----------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      int x =Integer.parseInt("9");
+      double c = Double.parseDouble("5");
+      int b = Integer.parseInt("444",16);
+
+      System.out.println(x);
+      System.out.println(c);
+      System.out.println(b);
+   }
+}
+
+Output:
+
+9
+5.0
+1092
+
+--------------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      Integer a = -8;
+      double d = -100;
+      float f = -90;    
+						
+      System.out.println(Math.abs(a));
+      System.out.println(Math.abs(d));     
+      System.out.println(Math.abs(f));    
+   }
+}
+
+Output:
+
+8
+100.0
+90.0
+
+-------------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      double d = -100.675;
+      float f = -90;    
+
+      System.out.println(Math.ceil(d));
+      System.out.println(Math.ceil(f)); 
+					 
+      System.out.println(Math.floor(d));
+      System.out.println(Math.floor(f)); 
+   }
+}
+
+Output:
+
+-100.0
+-90.0
+-101.0
+-90.0
+
+------------------------------------------------------------------
+
+
+public class Test{ 
+
+   public static void main(String args[]){
+      double d = -100.675;
+      float f = -90;    
+	 
+      System.out.println(Math.floor(d));
+      System.out.println(Math.floor(f)); 
+
+      System.out.println(Math.ceil(d));
+      System.out.println(Math.ceil(f));
+   }
+}
+
+Output:
+
+-101.0
+-90.0
+-100.0
+-90.0
+
+---------------------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      double d = 100.675;
+      double e = 100.500;
+      double f = 100.200;
+
+      System.out.println(Math.rint(d));
+      System.out.println(Math.rint(e)); 
+      System.out.println(Math.rint(f)); 
+   }
+}
+
+Output:
+
+101.0
+100.0
+100.0
+
+---------------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      double d = 100.675;
+      double e = 100.500;
+      float f = 100;
+      float g = 90f;
+
+      System.out.println(Math.round(d));
+      System.out.println(Math.round(e)); 
+      System.out.println(Math.round(f)); 
+      System.out.println(Math.round(g)); 
+   }
+}
+
+Output:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
