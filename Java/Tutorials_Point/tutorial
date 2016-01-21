@@ -836,6 +836,79 @@ Output:
 
 --------------------------------------------------------------------
 
+public class Test{ 
+
+   public static void main(String args[]){
+      System.out.println(Math.min(12.123, 12.456));      
+      System.out.println(Math.min(23.12, 23.0));  
+   }
+}
+
+
+--------------------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      System.out.println(Math.max(12.123, 12.456));      
+      System.out.println(Math.max(23.12, 23.0));  
+   }
+}
+
+-------------------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      double x = 11.635;
+      double y = 2.76;
+
+      System.out.printf("The value of e is %.4f%n", Math.E);
+      System.out.printf("exp(%.3f) is %.3f%n", x, Math.exp(x));  
+   }
+}
+
+----------------------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      double x = 11.635;
+      double y = 2.76;
+
+      System.out.printf("The value of e is %.4f%n", Math.E);
+      System.out.printf("log(%.3f) is %.3f%n", x, Math.log(x));
+   }
+}
+
+-------------------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      double x = 11.635;
+      double y = 2.76;
+
+      System.out.printf("The value of e is %.4f%n", Math.E);
+      System.out.printf("pow(%.3f, %.3f) is %.3f%n", x, y, Math.pow(x, y));
+
+   }
+}
+
+---------------------------------------------------------------------------
+
+public class Test{ 
+
+   public static void main(String args[]){
+      double x = 11.635;
+      double y = 2.76;
+
+      System.out.printf("The value of e is %.4f%n", Math.E);
+      System.out.printf("sqrt(%.3f) is %.3f%n", x, Math.sqrt(x));
+   }
+}
+
+--------------------------------------------------------------------------
 
 
 

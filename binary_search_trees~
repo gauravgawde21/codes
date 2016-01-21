@@ -1,0 +1,724 @@
+// C function to search a given key in a given BST
+struct node* search(struct node* root, int key)
+{
+    // Base Cases: root is null or key is present at root
+    if (root == NULL || root->key == key)
+       return root;
+    
+    // Key is greater than root's key
+    if (root->key < key)
+       return search(root->right, key);
+ 
+    // Key is smaller than root's key
+    return search(root->left, key);
+}
+
+
+# A utility function to search a given key in BST
+def search(root,key):
+     
+    # Base Cases: root is null or key is present at root
+    if root is None or root.val == key:
+        return root
+ 
+    # Key is greater than root's key
+    if root.val < key:
+        return search(root.right,key)
+   
+    # Key is smaller than root's key
+    return search(root.left,key)
+ 
+# This code is contributed by Bhavya Jain
+
+// A utility function to search a given key in BST
+public Node search(Node root, int key)
+{
+    // Base Cases: root is null or key is present at root
+    if (root==null || root.key==key)
+        return root;
+ 
+    // val is greater than root's key
+    if (root.key > key)
+        return search(root.left, key);
+ 
+    // val is less than root's key
+    return search(root.right, key);
+}
+==========================================================================================================
+
+// C program to demonstrate insert operation in binary search tree
+#include<stdio.h>
+#include<stdlib.h>
+  
+struct node
+{
+    int key;
+    struct node *left, *right;
+};
+  
+// A utility function to create a new BST node
+struct node *newNode(int item)
+{
+    struct node *temp =  (struct node *)malloc(sizeof(struct node));
+    temp->key = item;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+  
+// A utility function to do inorder traversal of BST
+void inorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        inorder(root->left);
+        printf("%d \n", root->key);
+        inorder(root->right);
+    }
+}
+  
+/* A utility function to insert a new node with given key in BST */
+struct node* insert(struct node* node, int key)
+{
+    /* If the tree is empty, return a new node */
+    if (node == NULL) return newNode(key);
+ 
+    /* Otherwise, recur down the tree */
+    if (key < node->key)
+        node->left  = insert(node->left, key);
+    else if (key > node->key)
+        node->right = insert(node->right, key);   
+ 
+    /* return the (unchanged) node pointer */
+    return node;
+}
+  
+// Driver Program to test above functions
+int main()
+{
+    /* Let us create following BST
+              50
+           /     \
+          30      70
+         /  \    /  \
+       20   40  60   80 */
+    struct node *root = NULL;
+    root = insert(root, 50);
+    insert(root, 30);
+    insert(root, 20);
+    insert(root, 40);
+    insert(root, 70);
+    insert(root, 60);
+    insert(root, 80);
+  
+    // print inoder traversal of the BST
+    inorder(root);
+  
+    return 0;
+}
+
+# Python program to demonstrate insert operation in binary search tree 
+ 
+# A utility class that represents an individual node in a BST
+class Node:
+    def __init__(self,key):
+        self.left = None
+        self.right = None
+        self.val = key
+ 
+# A utility function to insert a new node with the given key
+def insert(root,node):
+    if root is None:
+        root = node
+    else:
+        if root.val < node.val:
+            if root.right is None:
+                root.right = node
+            else:
+                insert(root.right, node)
+        else:
+            if root.left is None:
+                root.left = node
+            else:
+                insert(root.left, node)
+ 
+# A utility function to do inorder tree traversal
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(root.val)
+        inorder(root.right)
+ 
+ 
+# Driver program to test the above functions
+# Let us create the following BST
+#      50
+#    /    \
+#   30     70
+#   / \    / \
+#  20 40  60 80
+r = Node(50)
+insert(r,Node(30))
+insert(r,Node(20))
+insert(r,Node(40))
+insert(r,Node(70))
+insert(r,Node(60))
+insert(r,Node(80))
+ 
+# Print inoder traversal of the BST
+inorder(r)
+ 
+# This code is contributed by Bhavya Jain
+
+// Java program to demonstrate insert operation in binary search tree
+class BinarySearchTree {
+ 
+    /* Class containing left and right child of current node and key value*/
+    class Node {
+        int key;
+        Node left, right;
+ 
+        public Node(int item) {
+            key = item;
+            left = right = null;
+        }
+    }
+ 
+    // Root of BST
+    Node root;
+ 
+    // Constructor
+    BinarySearchTree() { 
+        root = null; 
+    }
+ 
+    // This method mainly calls insertRec()
+    void insert(int key) {
+       root = insertRec(root, key);
+    }
+     
+    /* A recursive function to insert a new key in BST */
+    Node insertRec(Node root, int key) {
+ 
+        /* If the tree is empty, return a new node */
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+ 
+        /* Otherwise, recur down the tree */
+        if (key < root.key)
+            root.left = insertRec(root.left, key);
+        else if (key > root.key)
+            root.right = insertRec(root.right, key);
+ 
+        /* return the (unchanged) node pointer */
+        return root;
+    }
+ 
+    // This method mainly calls InorderRec()
+    void inorder()  {
+       inorderRec(root);
+    }
+ 
+    // A utility function to do inorder traversal of BST
+    void inorderRec(Node root) {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.println(root.key);
+            inorderRec(root.right);
+        }
+    }
+ 
+    // Driver Program to test above functions
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+ 
+        /* Let us create following BST
+              50
+           /     \
+          30      70
+         /  \    /  \
+       20   40  60   80 */
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(70);
+        tree.insert(60);
+        tree.insert(80);
+ 
+        // print inorder traversal of the BST
+        tree.inorder();
+    }
+}
+// This code is contributed by Ankur Narain Verma
+
+==================================================================================================
+
+// C program to demonstrate delete operation in binary search tree
+#include<stdio.h>
+#include<stdlib.h>
+ 
+struct node
+{
+    int key;
+    struct node *left, *right;
+};
+ 
+// A utility function to create a new BST node
+struct node *newNode(int item)
+{
+    struct node *temp =  (struct node *)malloc(sizeof(struct node));
+    temp->key = item;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+ 
+// A utility function to do inorder traversal of BST
+void inorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        inorder(root->left);
+        printf("%d ", root->key);
+        inorder(root->right);
+    }
+}
+ 
+/* A utility function to insert a new node with given key in BST */
+struct node* insert(struct node* node, int key)
+{
+    /* If the tree is empty, return a new node */
+    if (node == NULL) return newNode(key);
+ 
+    /* Otherwise, recur down the tree */
+    if (key < node->key)
+        node->left  = insert(node->left, key);
+    else
+        node->right = insert(node->right, key);
+ 
+    /* return the (unchanged) node pointer */
+    return node;
+}
+ 
+/* Given a non-empty binary search tree, return the node with minimum
+   key value found in that tree. Note that the entire tree does not
+   need to be searched. */
+struct node * minValueNode(struct node* node)
+{
+    struct node* current = node;
+ 
+    /* loop down to find the leftmost leaf */
+    while (current->left != NULL)
+        current = current->left;
+ 
+    return current;
+}
+ 
+/* Given a binary search tree and a key, this function deletes the key
+   and returns the new root */
+struct node* deleteNode(struct node* root, int key)
+{
+    // base case
+    if (root == NULL) return root;
+ 
+    // If the key to be deleted is smaller than the root's key,
+    // then it lies in left subtree
+    if (key < root->key)
+        root->left = deleteNode(root->left, key);
+ 
+    // If the key to be deleted is greater than the root's key,
+    // then it lies in right subtree
+    else if (key > root->key)
+        root->right = deleteNode(root->right, key);
+ 
+    // if key is same as root's key, then This is the node
+    // to be deleted
+    else
+    {
+        // node with only one child or no child
+        if (root->left == NULL)
+        {
+            struct node *temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL)
+        {
+            struct node *temp = root->left;
+            free(root);
+            return temp;
+        }
+ 
+        // node with two children: Get the inorder successor (smallest
+        // in the right subtree)
+        struct node* temp = minValueNode(root->right);
+ 
+        // Copy the inorder successor's content to this node
+        root->key = temp->key;
+ 
+        // Delete the inorder successor
+        root->right = deleteNode(root->right, temp->key);
+    }
+    return root;
+}
+ 
+// Driver Program to test above functions
+int main()
+{
+    /* Let us create following BST
+              50
+           /     \
+          30      70
+         /  \    /  \
+       20   40  60   80 */
+    struct node *root = NULL;
+    root = insert(root, 50);
+    root = insert(root, 30);
+    root = insert(root, 20);
+    root = insert(root, 40);
+    root = insert(root, 70);
+    root = insert(root, 60);
+    root = insert(root, 80);
+ 
+    printf("Inorder traversal of the given tree \n");
+    inorder(root);
+ 
+    printf("\nDelete 20\n");
+    root = deleteNode(root, 20);
+    printf("Inorder traversal of the modified tree \n");
+    inorder(root);
+ 
+    printf("\nDelete 30\n");
+    root = deleteNode(root, 30);
+    printf("Inorder traversal of the modified tree \n");
+    inorder(root);
+ 
+    printf("\nDelete 50\n");
+    root = deleteNode(root, 50);
+    printf("Inorder traversal of the modified tree \n");
+    inorder(root);
+ 
+    return 0;
+}
+
+
+// Java program to demonstrate delete operation in binary search tree
+class BinarySearchTree
+{
+    /* Class containing left and right child of current node and key value*/
+    class Node
+    {
+        int key;
+        Node left, right;
+ 
+        public Node(int item)
+        {
+            key = item;
+            left = right = null;
+        }
+    }
+ 
+    // Root of BST
+    Node root;
+ 
+    // Constructor
+    BinarySearchTree()
+    {
+        root = null;
+    }
+ 
+    // This method mainly calls deleteRec()
+    void deleteKey(int key)
+    {
+        root = deleteRec(root, key);
+    }
+ 
+    /* A recursive function to insert a new key in BST */
+    Node deleteRec(Node root, int key)
+    {
+        /* Base Case: If the tree is empty */
+        if (root == null)  return root;
+ 
+        /* Otherwise, recur down the tree */
+        if (key < root.key)
+            root.left = deleteRec(root.left, key);
+        else if (key > root.key)
+            root.right = deleteRec(root.right, key);
+ 
+        // if key is same as root's key, then This is the node
+        // to be deleted
+        else
+        {
+            // node with only one child or no child
+            if (root.left == null)
+                return root.right;
+            else if (root.right == null)
+                return root.left;
+ 
+            // node with two children: Get the inorder successor (smallest
+            // in the right subtree)
+            root.key = minValue(root.right);
+ 
+            // Delete the inorder successor
+            root.right = deleteRec(root.right, root.key);
+        }
+ 
+        return root;
+    }
+ 
+    int minValue(Node root)
+    {
+        int minv = root.key;
+        while (root.left != null)
+        {
+            minv = root.left.key;
+            root = root.left;
+        }
+        return minv;
+    }
+ 
+    // This method mainly calls insertRec()
+    void insert(int key)
+    {
+        root = insertRec(root, key);
+    }
+ 
+    /* A recursive function to insert a new key in BST */
+    Node insertRec(Node root, int key)
+    {
+ 
+        /* If the tree is empty, return a new node */
+        if (root == null)
+        {
+            root = new Node(key);
+            return root;
+        }
+ 
+        /* Otherwise, recur down the tree */
+        if (key < root.key)
+            root.left = insertRec(root.left, key);
+        else if (key > root.key)
+            root.right = insertRec(root.right, key);
+ 
+        /* return the (unchanged) node pointer */
+        return root;
+    }
+ 
+    // This method mainly calls InorderRec()
+    void inorder()
+    {
+        inorderRec(root);
+    }
+ 
+    // A utility function to do inorder traversal of BST
+    void inorderRec(Node root)
+    {
+        if (root != null)
+        {
+            inorderRec(root.left);
+            System.out.print(root.key + " ");
+            inorderRec(root.right);
+        }
+    }
+ 
+    // Driver Program to test above functions
+    public static void main(String[] args)
+    {
+        BinarySearchTree tree = new BinarySearchTree();
+ 
+        /* Let us create following BST
+              50
+           /     \
+          30      70
+         /  \    /  \
+        20   40  60   80 */
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(70);
+        tree.insert(60);
+        tree.insert(80);
+ 
+        System.out.println("Inorder traversal of the given tree");
+        tree.inorder();
+ 
+        System.out.println("\nDelete 20");
+        tree.deleteKey(20);
+        System.out.println("Inorder traversal of the modified tree");
+        tree.inorder();
+ 
+        System.out.println("\nDelete 30");
+        tree.deleteKey(30);
+        System.out.println("Inorder traversal of the modified tree");
+        tree.inorder();
+ 
+        System.out.println("\nDelete 50");
+        tree.deleteKey(50);
+        System.out.println("Inorder traversal of the modified tree");
+        tree.inorder();
+    }
+}
+
+==========================================================================================================================
+
+#include <stdio.h>
+#include<stdlib.h>
+ 
+/* A binary tree node has data, pointer to left child 
+   and a pointer to right child */
+struct node 
+{
+    int data;
+    struct node* left;
+    struct node* right;
+};
+ 
+/* Helper function that allocates a new node 
+with the given data and NULL left and right 
+pointers. */
+struct node* newNode(int data) 
+{
+  struct node* node = (struct node*)
+                       malloc(sizeof(struct node));
+  node->data  = data;
+  node->left  = NULL;
+  node->right = NULL;
+   
+  return(node);
+}
+ 
+/* Give a binary search tree and a number, 
+inserts a new node with the given number in 
+the correct place in the tree. Returns the new 
+root pointer which the caller should then use 
+(the standard trick to avoid using reference 
+parameters). */
+struct node* insert(struct node* node, int data) 
+{
+  /* 1. If the tree is empty, return a new,     
+      single node */
+  if (node == NULL) 
+    return(newNode(data));  
+  else
+  {
+    /* 2. Otherwise, recur down the tree */
+    if (data <= node->data) 
+        node->left  = insert(node->left, data);
+    else
+        node->right = insert(node->right, data);
+   
+    /* return the (unchanged) node pointer */
+    return node; 
+  }
+}
+ 
+/* Given a non-empty binary search tree,  
+return the minimum data value found in that 
+tree. Note that the entire tree does not need 
+to be searched. */
+int minValue(struct node* node) {
+  struct node* current = node;
+ 
+  /* loop down to find the leftmost leaf */
+  while (current->left != NULL) {
+    current = current->left;
+  }
+  return(current->data);
+}
+ 
+/* Driver program to test sameTree function*/   
+int main()
+{
+  struct node* root = NULL;
+  root = insert(root, 4);
+  insert(root, 2);
+  insert(root, 1);
+  insert(root, 3);
+  insert(root, 6);
+  insert(root, 5);  
+ 
+  printf("\n Minimum value in BST is %d", minValue(root));
+  getchar();
+  return 0;    
+}
+
+// Java program to find minimum value node in Binary Search Tree
+ 
+// A binary tree node
+class Node {
+ 
+    int data;
+    Node left, right;
+ 
+    Node(int d) {
+        data = d;
+        left = right = null;
+    }
+}
+ 
+class BinaryTree {
+ 
+    static Node head;
+     
+    /* Given a binary search tree and a number, 
+     inserts a new node with the given number in 
+     the correct place in the tree. Returns the new 
+     root pointer which the caller should then use 
+     (the standard trick to avoid using reference 
+     parameters). */
+    Node insert(Node node, int data) {
+         
+        /* 1. If the tree is empty, return a new,     
+         single node */
+        if (node == null) {
+            return (new Node(data));
+        } else {
+             
+            /* 2. Otherwise, recur down the tree */
+            if (data <= node.data) {
+                node.left = insert(node.left, data);
+            } else {
+                node.right = insert(node.right, data);
+            }
+ 
+            /* return the (unchanged) node pointer */
+            return node;
+        }
+    }
+ 
+    /* Given a non-empty binary search tree,  
+     return the minimum data value found in that 
+     tree. Note that the entire tree does not need 
+     to be searched. */
+    int minvalue(Node node) {
+        Node current = node;
+ 
+        /* loop down to find the leftmost leaf */
+        while (current.left != null) {
+            current = current.left;
+        }
+        return (current.data);
+    }
+     
+    // Driver program to test above functions
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        Node root = null;
+        root = tree.insert(root, 4);
+        tree.insert(root, 2);
+        tree.insert(root, 1);
+        tree.insert(root, 3);
+        tree.insert(root, 6);
+        tree.insert(root, 5);
+ 
+        System.out.println("The minimum value of BST is " + tree.minvalue(root));
+    }
+}
+ 
+// This code has been contributed by Mayank Jaiswal
+
+========================================================================================================================
+
+
